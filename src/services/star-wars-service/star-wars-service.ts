@@ -26,13 +26,17 @@ class StarWarsServiceImpl {
 
     private async mapGetHeroesResponseToResult(response: GetHeroesResponse): Promise<GetHeroesResult> {
         const heroes: Hero[] = [];
-        for (const hero of response.results) {
-            const homeworld = await HttpClient.get<{ name: string }>(hero.homeworld);
+
+        const homeworldPromises = response.results.map(hero => HttpClient.get<{ name: string }>(hero.homeworld));
+        const homeworldResults = await Promise.all(homeworldPromises);
+
+        for (let i = 0; i < response.results.length; i++) {
+            const hero = response.results[i];
             const id = extractIdFromHeroUrl(hero.url);
             heroes.push({
                 id,
                 name: hero.name,
-                homeworld: homeworld.name,
+                homeworld: homeworldResults[i].name,
                 avatarUrl: getAvatarUrlByHeroId(id),
             });
         }
