@@ -101,10 +101,9 @@ export const {addFavoriteHero} = heroesSlice.actions;
 export default heroesSlice.reducer;
 export const selectNextUrl = (state: RootState) => state.heroes.nextUrl;
 export const selectPrevUrl = (state: RootState) => state.heroes.prevUrl;
-export const selectHeroes = (state: RootState) => state.heroes.heroes;
 export const selectCurrentPageHeroes = (state: RootState) => state.heroes.currentPageHeroes;
-export const selectFavoriteHeroIds = (state: RootState) => state.heroes.favoriteHeroIds;
 export const selectFavoriteHeroes = (state: RootState) => {
     return state.heroes.heroes.filter(hero => state.heroes.favoriteHeroIds.includes(hero.id));
 }
+export const selectError = (state: RootState) => state.heroes.error;
 

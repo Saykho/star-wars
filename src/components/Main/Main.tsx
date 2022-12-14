@@ -1,11 +1,6 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import {
-    addFavoriteHero,
-    selectCurrentPageHeroes,
-    selectNextUrl,
-    selectPrevUrl
-} from "../../state/Heroes/heroes-slice";
+import { selectCurrentPageHeroes, selectError, selectNextUrl, selectPrevUrl } from "../../state/Heroes/heroes-slice";
 import { getHeroes } from "../../state/Heroes/async-actions/get-heroes";
 import { getHeroesByUrl } from "../../state/Heroes/async-actions/get-hero-by-url";
 import { Search } from "../Search/Search";
@@ -17,9 +12,12 @@ export function Main() {
     const dispatch = useAppDispatch();
     const nextPageUrl = useAppSelector(selectNextUrl);
     const prevPageUrl = useAppSelector(selectPrevUrl);
+    const error = useAppSelector(selectError);
 
     useEffect(() => {
-        dispatch(getHeroes({page: 1}));
+        if (!heroes.length) {
+            dispatch(getHeroes({page: 1}));
+        }
     }, []);
 
     const loadHeroesByUrl = (url: string) => {
@@ -29,6 +27,7 @@ export function Main() {
     return (
         <>
             <Search/>
+            {error && <div>Ошибка: {error}</div>}
             {
                 heroes.map(hero => (
                     <HeroInfo hero={hero} readonly={false} key={hero.id}/>
