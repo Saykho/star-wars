@@ -1,0 +1,62 @@
+.hero {
+  border: 1px solid #3d3d3d;
+  border-radius: 8px;
+  width: 230px;
+  height: 490px;
+  cursor: pointer;
+  position: relative;
+  background: #1D1E22;
+  margin-bottom: 50px;
+  box-shadow: 0 5px 30px 0 rgba(38, 112, 250, 0.2);
+  transition-property: transform;
+  transition-duration: 0.5s;
+  margin-right: 16px;
+  margin-left: 16px;
+
+  &__avatar {
+    height: 300px;
+    width: 228px;
+    border-radius: 8px;
+  }
+
+  &__info {
+    align-self: self-end;
+    padding: 8px 10px;
+    color: white;
+
+    .hero-name {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 30px;
+      margin-bottom: 8px;
+    }
+
+    .hero-birthYear, .hero-gender, .hero-height {
+      font-size: 16px;
+      line-height: 22px;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .hero-homeworld {
+      font-size: 18px;
+      line-height: 22px;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  &__favorite {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  &:hover {
+    box-shadow: 0 64px 64px -48px rgba(31, 47, 70, 0.12);
+    transform: scale(1.1) translateY(16px);
+  }
+}

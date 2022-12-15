@@ -1,0 +1,17 @@
+.favorite-heroes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.go-main-button {
+  cursor: pointer;
+  height: 40px;
+  width: 200px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  background: #0d2581;
+  margin-bottom: 40px;
+}

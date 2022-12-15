@@ -106,4 +106,5 @@ export const selectFavoriteHeroes = (state: RootState) => {
     return state.heroes.heroes.filter(hero => state.heroes.favoriteHeroIds.includes(hero.id));
 }
 export const selectError = (state: RootState) => state.heroes.error;
+export const selectIsHeroesLoading = (state: RootState) => state.heroes.status === HeroesStateStatus.loading;
 

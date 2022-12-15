@@ -6,6 +6,9 @@ import { getHeroesByUrl } from "../../state/Heroes/async-actions/get-hero-by-url
 import { Search } from "../Search/Search";
 import { HeroInfo } from "../HeroInfo/HeroInfo";
 import { Link } from "react-router-dom";
+import "./Main.scss";
+import rightArrow from "../../assets/img/right-arrow.svg"
+import leftArrow from "../../assets/img/left-arrow.svg"
 
 export function Main() {
     const heroes = useAppSelector(selectCurrentPageHeroes);
@@ -25,26 +28,30 @@ export function Main() {
     };
 
     return (
-        <>
+        <div className="hero-cards">
             <Search/>
-            {error && <div>Ошибка: {error}</div>}
-            {
-                heroes.map(hero => (
-                    <HeroInfo hero={hero} readonly={false} key={hero.id}/>
-                ))
-            }
-            {prevPageUrl && <button onClick={() => {
+            {error && <div className="hero-cards__error">Ошибка: {error}</div>}
+            <div className="hero-cards__list">
+                {
+                    heroes.map(hero => (
+                        <HeroInfo hero={hero} readonly={false} key={hero.id}/>
+                    ))
+                }
+            </div>
+            {prevPageUrl && <button className="hero-cards__prev-button" onClick={() => {
                 loadHeroesByUrl(prevPageUrl!);
-            }}>Предыдущая страница
+            }}>
+                <img src={leftArrow} alt="Arrow right"/>
             </button>}
 
-            {nextPageUrl && <button onClick={() => {
+            {nextPageUrl && <button className="hero-cards__next-button" onClick={() => {
                 loadHeroesByUrl(nextPageUrl!);
-            }}>Следующая страница
+            }}>
+                <img src={rightArrow} alt="Arrow right"/>
             </button>}
             <Link to="/favorite">
-                <button>Перейти в Избранные</button>
+                <button className="hero-cards__go-favorite-button">Перейти в Избранные</button>
             </Link>
-        </>
+        </div>
     );
 }

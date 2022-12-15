@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./state";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
+import 'reset-css/reset.css';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

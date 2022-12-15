@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box !important;
+  font-family: 'Josefin Sans', sans-serif !important;
+  font-style: normal !important;
+}
+
+body {
+  background-image: url("assets/img/star-wars.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+#root {
+  padding: 30px 80px;
+}

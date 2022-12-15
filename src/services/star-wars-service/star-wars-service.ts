@@ -36,8 +36,11 @@ class StarWarsServiceImpl {
             heroes.push({
                 id,
                 name: hero.name,
+                height: hero.height,
+                birthYear: hero.birth_year,
                 homeworld: homeworldResults[i].name,
                 avatarUrl: getAvatarUrlByHeroId(id),
+                gender: hero.gender,
             });
         }
 

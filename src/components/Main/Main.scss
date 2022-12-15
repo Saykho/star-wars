@@ -1,0 +1,57 @@
+.hero-cards {
+  position: relative;
+
+  &__error {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: 700;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__prev-button, &__next-button {
+    background: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid azure;
+    cursor: pointer;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__prev-button {
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+  }
+
+  &__next-button {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+
+  &__go-favorite-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 160px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    background: #0d2581;
+  }
+}
+
+

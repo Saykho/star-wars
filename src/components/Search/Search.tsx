@@ -2,6 +2,7 @@ import React, { FormEvent, useState } from "react";
 import { useAppDispatch } from "../../hooks/hooks";
 import { searchHeroes } from "../../state/Heroes/async-actions/search-heroes";
 import { getHeroes } from "../../state/Heroes/async-actions/get-heroes";
+import "./Search.scss";
 
 export function Search() {
     const dispatch = useAppDispatch();
@@ -18,12 +19,13 @@ export function Search() {
         dispatch(getHeroes({page: pageNumber}));
     };
     return (
-        <div>
-            <form onSubmit={e => {
+        <div className="hero-cards__search">
+            <form className="search-form"
+                onSubmit={e => {
                 e.preventDefault();
                 search();
             }}>
-                <input
+                <input className="search-input"
                     type="text"
                     value={heroesQuery}
                     onInput={(e: FormEvent<HTMLInputElement>) => {
@@ -32,10 +34,10 @@ export function Search() {
                     }}
                     placeholder="Найти персонажа"
                 />
-                <button type="submit" disabled={!heroesQuery?.trim()}>Найти</button>
+                <button className="search-button" type="submit" disabled={!heroesQuery?.trim()}>Найти</button>
             </form>
-            <div>
-                <input
+            <div className="search-page-number">
+                <input className="page-number"
                     type="number"
                     value={pageNumber}
                     onInput={(e: FormEvent<HTMLInputElement>) => {
@@ -43,7 +45,7 @@ export function Search() {
                         setPageNumber(+target.value);
                     }}
                 />
-                <button
+                <button className="page-number-search-button"
                     disabled={pageNumber < 1}
                     onClick={loadPage}>
                     Перейти
